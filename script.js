@@ -9,21 +9,25 @@ const setHighScore = value =>
     : null;
 const resetGame = () => {
   displayNumber.textContent = '?';
-  message.textContent = 'Start guessing...';
+  setMessage('Start guessing...');
   displayNumber.style.width = '15rem';
   guess.value = '';
   document.querySelector('body').style.backgroundColor = '#222';
   scoreValue = 20;
   setScore(scoreValue);
   guessNumber = getRamNumber();
+  btnCheck.disabled = false;
+  btnCheck.style.backgroundColor = '#eee';
 };
+const setMessage = message =>
+  (document.querySelector('.message').textContent = message);
+
 // Variables
 let guessNumber = getRamNumber();
 let scoreValue = 20;
 console.log(guessNumber);
 
 //selector's
-const message = document.querySelector('.message');
 const displayNumber = document.querySelector('.number');
 const score = document.querySelector('.score');
 const highScore = document.querySelector('.highscore');
@@ -36,30 +40,27 @@ btnCheck.addEventListener('click', () => {
   const userNumber = Number(guess.value);
   // no input
   if (!userNumber) {
-    message.textContent = '⛔️ No Number, try again!';
+    setMessage('⛔️ No Number, try again!');
     // player win
   } else if (userNumber === guessNumber) {
-    message.textContent = '🎉 Correct number!';
+    setMessage('🎉 Correct number!');
     displayNumber.textContent = guessNumber;
     displayNumber.style.width = '30rem';
     document.querySelector('body').style.backgroundColor = '#60b347';
     setHighScore(scoreValue);
     // still playing
   } else if (scoreValue > 1) {
-    // too high number
-    if (userNumber > guessNumber) {
-      message.textContent = '⬆️ Too high number!';
-      setScore(--scoreValue);
-      // too low number
-    } else {
-      message.textContent = '⬇️ Too low number!';
-      setScore(--scoreValue);
-    }
+    // too high or low number
+    setMessage(
+      userNumber > guessNumber ? '⬆️ Too high number!' : '⬇️ Too low number!'
+    );
+    setScore(--scoreValue);
     // player lose
   } else {
-    message.textContent = '💥 You Lose!';
+    setMessage('💥 You Lose!');
     setScore(--scoreValue);
     btnCheck.disabled = true;
+    btnCheck.style.backgroundColor = '#ccc';
   }
 });
 
