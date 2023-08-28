@@ -109,11 +109,17 @@ h1 {
   background-color: #ccc;
 }
 
+.btn.reset {
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+}
+
 .message {
   margin-bottom: 8rem;
   height: 3rem;
 }
 
-.label-score {
+.label-score,
+.label-highscore {
   margin-bottom: 2rem;
 }
