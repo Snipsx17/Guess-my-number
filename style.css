@@ -123,3 +123,68 @@ h1 {
 .label-highscore {
   margin-bottom: 2rem;
 }
+
+/* RESPOSIVE */
+
+@media (max-width: 576px) {
+  h1 {
+    position: static;
+    transform: none;
+    padding-top: 8rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  header {
+    height: 28vh;
+  }
+
+  .btn,
+  .btn.reset {
+    font-size: 1.2rem;
+    padding: 1.7rem 2rem;
+    cursor: pointer;
+  }
+
+  .between {
+    font-size: 1.2rem;
+    position: static;
+    text-align: center;
+  }
+
+  main {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .number {
+    font-size: 3rem;
+    padding: 3rem 0rem;
+  }
+
+  .left {
+    width: 100vw;
+    padding-top: 5rem;
+  }
+
+  .right {
+    width: 100vw;
+    text-align: center;
+  }
+
+  .guess {
+    font-size: 2.5rem;
+    padding: 2rem;
+    width: 15rem;
+  }
+
+  .message {
+    margin-bottom: 1.5rem;
+  }
+
+  .message,
+  .label-highscore,
+  .label-score {
+    font-size: 1.2rem;
+  }
+}
